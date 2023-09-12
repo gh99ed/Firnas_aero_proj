@@ -1,0 +1,13 @@
+{
+    "MemLog": "Member login",
+    "ُEmail": "ُEmail",
+    "Password":"Password",
+    "Login" : "Login",
+    "Upload_image" : "Upload image",
+    "Upload_image_dec" :"Upload images and process them to create a ticket in the AlMadinah platform",
+    "Interactive_map": "Interactive map",
+    "Interactive_map_dec_firnas": "This map is to view tickets and push them to AlMadinah platform",
+    "Interactive_map_dec_med": "This map is to view tickets",
+    "Dashboard": "Dashboard",
+    "Dashboard_dec": "This dashboard to view statistics of visual pollution data in AlMadinah"
+}

@@ -1,0 +1,495 @@
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+/* @preserve
+ * Leaflet 1.9.4, a JS library for interactive maps. https://leafletjs.com
+ * (c) 2010-2023 Vladimir Agafonkin, (c) 2010-2011 CloudMade
+ */
+
+/*! ./FilterBuilders */
+
+/*! ./advancedFilterBuilder */
+
+/*! ./basicFilterBuilder */
+
+/*! ./bookmarksManager */
+
+/*! ./config */
+
+/*! ./create */
+
+/*! ./dashboard */
+
+/*! ./embed */
+
+/*! ./errors */
+
+/*! ./factories */
+
+/*! ./filterBuilder */
+
+/*! ./page */
+
+/*! ./qna */
+
+/*! ./quickCreate */
+
+/*! ./relativeDateFilterBuilder */
+
+/*! ./relativeTimeFilterBuilder */
+
+/*! ./report */
+
+/*! ./service */
+
+/*! ./tile */
+
+/*! ./topNFilterBuilder */
+
+/*! ./util */
+
+/*! ./visual */
+
+/*! ./visualDescriptor */
+
+/*! http-post-message */
+
+/*! http-post-message v0.2.3 | (c) 2016 Microsoft Corporation MIT */
+
+/*! powerbi-models */
+
+/*! powerbi-router */
+
+/*! powerbi-router v0.1.5 | (c) 2016 Microsoft Corporation MIT */
+
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+
+/*! window-post-message-proxy */
+
+/*! window-post-message-proxy v0.2.6 | (c) 2016 Microsoft Corporation MIT */
+
+/*!********************!*\
+          !*** ./src/qna.ts ***!
+          \********************/
+
+/*!*********************!*\
+          !*** ./src/page.ts ***!
+          \*********************/
+
+/*!*********************!*\
+          !*** ./src/tile.ts ***!
+          \*********************/
+
+/*!*********************!*\
+          !*** ./src/util.ts ***!
+          \*********************/
+
+/*!**********************!*\
+          !*** ./src/embed.ts ***!
+          \**********************/
+
+/*!***********************!*\
+          !*** ./src/config.ts ***!
+          \***********************/
+
+/*!***********************!*\
+          !*** ./src/create.ts ***!
+          \***********************/
+
+/*!***********************!*\
+          !*** ./src/errors.ts ***!
+          \***********************/
+
+/*!***********************!*\
+          !*** ./src/report.ts ***!
+          \***********************/
+
+/*!***********************!*\
+          !*** ./src/visual.ts ***!
+          \***********************/
+
+/*!************************!*\
+          !*** ./src/service.ts ***!
+          \************************/
+
+/*!**************************!*\
+          !*** ./src/dashboard.ts ***!
+          \**************************/
+
+/*!**************************!*\
+          !*** ./src/factories.ts ***!
+          \**************************/
+
+/*!****************************!*\
+          !*** ./src/quickCreate.ts ***!
+          \****************************/
+
+/*!*******************************!*\
+          !*** ./src/powerbi-client.ts ***!
+          \*******************************/
+
+/*!*********************************!*\
+          !*** ./src/bookmarksManager.ts ***!
+          \*********************************/
+
+/*!*********************************!*\
+          !*** ./src/visualDescriptor.ts ***!
+          \*********************************/
+
+/*!*************************************!*\
+          !*** ./src/FilterBuilders/index.ts ***!
+          \*************************************/
+
+/*!*********************************************!*\
+          !*** ./src/FilterBuilders/filterBuilder.ts ***!
+          \*********************************************/
+
+/*!*************************************************!*\
+          !*** ./src/FilterBuilders/topNFilterBuilder.ts ***!
+          \*************************************************/
+
+/*!**************************************************!*\
+          !*** ./src/FilterBuilders/basicFilterBuilder.ts ***!
+          \**************************************************/
+
+/*!****************************************************!*\
+          !*** ./node_modules/powerbi-models/dist/models.js ***!
+          \****************************************************/
+
+/*!****************************************************!*\
+          !*** ./node_modules/powerbi-router/dist/router.js ***!
+          \****************************************************/
+
+/*!*****************************************************!*\
+          !*** ./src/FilterBuilders/advancedFilterBuilder.ts ***!
+          \*****************************************************/
+
+/*!*********************************************************!*\
+          !*** ./src/FilterBuilders/relativeDateFilterBuilder.ts ***!
+          \*********************************************************/
+
+/*!*********************************************************!*\
+          !*** ./src/FilterBuilders/relativeTimeFilterBuilder.ts ***!
+          \*********************************************************/
+
+/*!****************************************************************!*\
+          !*** ./node_modules/http-post-message/dist/httpPostMessage.js ***!
+          \****************************************************************/
+
+/*!*******************************************************************************!*\
+          !*** ./node_modules/window-post-message-proxy/dist/windowPostMessageProxy.js ***!
+          \*******************************************************************************/
+
+/**
+            * @license
+            * Copyright 2017 Google LLC
+            *
+            * Licensed under the Apache License, Version 2.0 (the "License");
+            * you may not use this file except in compliance with the License.
+            * You may obtain a copy of the License at
+            *
+            *   http://www.apache.org/licenses/LICENSE-2.0
+            *
+            * Unless required by applicable law or agreed to in writing, software
+            * distributed under the License is distributed on an "AS IS" BASIS,
+            * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+            * See the License for the specific language governing permissions and
+            * limitations under the License.
+            */
+
+/**
+          * @license
+          * Copyright 2017 Google LLC
+          *
+          * Licensed under the Apache License, Version 2.0 (the "License");
+          * you may not use this file except in compliance with the License.
+          * You may obtain a copy of the License at
+          *
+          *   http://www.apache.org/licenses/LICENSE-2.0
+          *
+          * Unless required by applicable law or agreed to in writing, software
+          * distributed under the License is distributed on an "AS IS" BASIS,
+          * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+          * See the License for the specific language governing permissions and
+          * limitations under the License.
+          */
+
+/**
+        * @license
+        * Copyright 2020 Google LLC
+        *
+        * Licensed under the Apache License, Version 2.0 (the "License");
+        * you may not use this file except in compliance with the License.
+        * You may obtain a copy of the License at
+        *
+        *   http://www.apache.org/licenses/LICENSE-2.0
+        *
+        * Unless required by applicable law or agreed to in writing, software
+        * distributed under the License is distributed on an "AS IS" BASIS,
+        * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        * See the License for the specific language governing permissions and
+        * limitations under the License.
+        */
+
+/**
+      * @license
+      * Copyright 2020 Google LLC
+      *
+      * Licensed under the Apache License, Version 2.0 (the "License");
+      * you may not use this file except in compliance with the License.
+      * You may obtain a copy of the License at
+      *
+      *   http://www.apache.org/licenses/LICENSE-2.0
+      *
+      * Unless required by applicable law or agreed to in writing, software
+      * distributed under the License is distributed on an "AS IS" BASIS,
+      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      * See the License for the specific language governing permissions and
+      * limitations under the License.
+      */
+
+/**
+    * @license
+    * Copyright 2020 Google LLC
+    *
+    * Licensed under the Apache License, Version 2.0 (the "License");
+    * you may not use this file except in compliance with the License.
+    * You may obtain a copy of the License at
+    *
+    *   http://www.apache.org/licenses/LICENSE-2.0
+    *
+    * Unless required by applicable law or agreed to in writing, software
+    * distributed under the License is distributed on an "AS IS" BASIS,
+    * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    * See the License for the specific language governing permissions and
+    * limitations under the License.
+    */
+
+/**
+  * @license
+  * Copyright 2018 Google LLC
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *   http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+
+/**
+ * @license
+ * Copyright 2017 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @license
+ * Copyright 2018 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @license
+ * Copyright 2020 Google LLC.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @license
+ * Copyright 2021 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @license
+ * Copyright 2022 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @license
+ * Copyright 2023 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @license React
+ * react-dom.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @license React
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @license React
+ * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @license React
+ * scheduler.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @remix-run/router v1.7.2
+ *
+ * Copyright (c) Remix Software Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.md file in the root directory of this source tree.
+ *
+ * @license MIT
+ */
+
+/**
+ * React Router DOM v6.14.2
+ *
+ * Copyright (c) Remix Software Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.md file in the root directory of this source tree.
+ *
+ * @license MIT
+ */
+
+/**
+ * React Router v6.14.2
+ *
+ * Copyright (c) Remix Software Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.md file in the root directory of this source tree.
+ *
+ * @license MIT
+ */
